@@ -20,6 +20,24 @@ $url = explode("/", $url);
             $method = $url[1];
         }
     }
+    
+    //me permite obtener las clases que estan siendo invocada
+    //de esta forma simplificamos codigo ya que no necesitamos colocar muchos require
+    spl_autoload_register(function($class){
+        //verifica si existe el archivo en la carpeta. Si llega existir
+        //lo une a index.php
+        if(file_exists(LBS.$class.".php")){
+            require LBS.$class.".php";
+        }
+    });    
+    
+    //$obj = new Controllers();
 
-    spl_autoload_register(function($class){});
+    $controllersPath = "Controllers/".$controller.'.php';
+
+    if(file_exists($controllersPath)){
+        require $controllersPath;
+        $controller = new $controller();
+    }
+
 ?>
