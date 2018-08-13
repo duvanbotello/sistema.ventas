@@ -2,7 +2,11 @@
     class Index
     {
         public function __construct() {
-            echo 'Controlador Index';
+            
+        }
+
+        public function index(){
+            echo 'Metodo index';
         }
     }
     

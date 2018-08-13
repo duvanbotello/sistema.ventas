@@ -32,12 +32,32 @@ $url = explode("/", $url);
     });    
     
     //$obj = new Controllers();
-
+    //Obtengo los datos del controlador Error
+    require 'Controllers/Error.php';
+    //Instancio la clase error para traerme los metodos.
+    $error = new Errors();
+    //llama a los controladores
     $controllersPath = "Controllers/".$controller.'.php';
 
+    //verifica que existan los controladores
     if(file_exists($controllersPath)){
         require $controllersPath;
+        //instanciamos la clase.
         $controller = new $controller();
+       
+        if(isset($method)){
+            //verifico que el metodo exista dentro del controlador
+            if(method_exists($controller, $method)){
+                //Si el metodo existe lo ejecuto.
+                $controller->{$method}();
+            }else{
+                //si no, ejecuto el metodo error() del controlador Error
+                $error -> error();
+            }
+
+        }
+    }else{
+        $error -> error();
     }
 
 ?>
