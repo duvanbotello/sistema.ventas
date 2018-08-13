@@ -7,7 +7,7 @@ class index_model{
     }
 
     function indexModel(){
-        echo "Metodo Index Model";
+        
     }
 }
 

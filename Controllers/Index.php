@@ -7,7 +7,8 @@
         }
 
         public function index(){
-            
+            //ejecuto el metodo render de la libreria Views le paso el cotrolador y la vista como parametro
+            $this->view->render($this,"index");
         }
     }
     
