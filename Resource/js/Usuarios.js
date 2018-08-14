@@ -1,5 +1,36 @@
 class Usuarios{
     constructor(){
-        
+
+    }
+    //metodo loginUser
+    loginUser(email, password){
+        //verifica que el campo email contenga datos.
+        if(email == ""){
+            //el .focus útil para posicionarnos en un campo concreto de un formulario, ya sea al principio del formulario 
+            //o por validaciones que vayamos haciendo y que nos hagan ir a otro campo del formulario.
+            document.getElementById("email").focus();
+            //toast para mandar mensajes
+            M.toast({ html: 'Ingrese el email', classes: 'rounded'});
+        }else{
+            //si el campo del email tiene datos verifica el de la pasword
+            if(password == ""){
+                document.getElementById("password").focus();
+                M.toast({ html: 'Ingrese el Password', classes: 'rounded'});
+            }else{
+                //valida utilizan la funcion validarEmail que esta en Funciones 
+                //verificar si el email es valido
+                if(validarEmail(email)){
+                    if(6 <= password.length){
+
+                    }else{
+                        document.getElementById("password").focus();
+                        M.toast({ html: 'Introducce al menos 6 caracteres en su contraseña', classes: 'rounded'});
+                    }
+                }else{
+                     document.getElementById("email").focus();
+                     M.toast({ html: 'Ingrese Una Direccion de Correo Valida.', classes: 'rounded'});
+                }       
+            }
+        }
     }
 }
