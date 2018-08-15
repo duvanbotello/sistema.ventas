@@ -21,7 +21,12 @@ class Usuarios{
                 //verificar si el email es valido
                 if(validarEmail(email)){
                     if(6 <= password.length){
-
+                        //para enviar nuestros datos por post al servidor
+                        //le enviamos como parametro la ruta del controlador
+                        //y optenemos respuesta atraves de response.
+                        $.post("Index/userLogin", {email,password}, (response)=>{
+                            console.log(response);
+                        });
                     }else{
                         document.getElementById("password").focus();
                         M.toast({ html: 'Introducce al menos 6 caracteres en su contraseña', classes: 'rounded'});
