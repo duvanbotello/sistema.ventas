@@ -20,6 +20,36 @@ class QueryManager{
         }
     }
 
+    //creamos el metodo para hacer las consultas
+    //pedimos como parametros las columnubas a consultas, el nombre de la tabla
+    //la restriccion y los parametros de las restriciones
+    function select1($attr, $table, $where, $param){
+        try{
+            //verificamos si el where trae datos.
+            if($where == ""){
+                //si el where no trae datos se hace una consulta sin restricciones.
+                $query = " SELECT ".$attr." FROM ".$table;
+            }else{
+                //y si trae datos se hace la consulta con la restriccion
+                $query = "SELECT".$attr." FROM ".$table." WHERE ".$where;
+            }
+
+            //utilizo la clase pdo para almacer el query en sth
+            $sth = $this->pdo->prepare($query);
+            //ejecuto el query
+            $sth->execute($param);
+            //guardo todos los datos de la consulta dentro de un array
+            $response = $sth->fetch(PDO::FETCH_ASSOC);
+            //retorno un array con el resultado
+            return array("results" => $response);
+        }catch(PDOExepcion $e){
+            return $e->getMessage();
+        }
+        $pdo = null;
+    }
+
+
+
 }
 
 ?>
