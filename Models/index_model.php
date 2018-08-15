@@ -1,8 +1,9 @@
 <?php
 
-class index_model{
+class index_model extends Conexion{
     public function __construct() {
-        //ejecutamos el metodo indexModel dentro de la clase.
+        //Ejecutamos el metodos Constructor de la clase Conexion.
+        parent::__construct();
     }
 
     function userLogin($email, $password){
