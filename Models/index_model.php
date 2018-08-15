@@ -14,7 +14,7 @@ class index_model extends Conexion{
         //utilizo el objeto db que esta en la clase conexion y es una instancia de la clase QueryManager
         //para utilizar el metodo select1 y hacer la consulta a la base de datos
         $response = $this->db->select1("*",'usuarios',$where,$param);
-        return $password;
+        return $response;
     }
 }
 
