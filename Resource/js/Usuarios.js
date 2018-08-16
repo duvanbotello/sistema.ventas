@@ -26,6 +26,25 @@ class Usuarios{
                         //y optenemos respuesta atraves de response.
                         $.post("Index/userLogin", {email,password}, (response)=>{
                             console.log(response);
+                            try{
+                                //paso los datos del vector response que envian desde el servidor
+                                //con JSON para manejarlos en la vista.
+                                var item = JSON.parse(response);
+                                //Verifico que el idUsuario sea mayor a 0 para verificar que el inicio de 
+                                //session sea valido.
+                                if(0 < item.IdUsuario){
+                                    //si el inicio de session es correcto lo enviamos al controlador Principal
+                                    //para que abra la vista principal
+                                    window.location.href = URL + "Principal/principal";
+                                }else{
+                                    //de lo contrario mostramos un mensaje de error
+                                    document.getElementById("indexMessage").innerHTML = "Email o Contraseña Incorrectos";
+
+                                }
+                            }catch(error){
+                                //por si susece algun error en el proceimiento
+                                document.getElementById("indexMessage").innerHTML = response;
+                            }
                         });
                     }else{
                         document.getElementById("password").focus();
