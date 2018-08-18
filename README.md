@@ -5,4 +5,4 @@ Estoy Realizando un curso en Udemy, el proposito del mismo es realizar un Sistem
 
 De esta manera puedo llevar un documento del paso a paso que se va ha realizar en el curso.
 
-# .... Todo lo publicado aqui es utilizado para fines educativos ....
+# .. Todo lo publicado aqui es utilizado para fines educativos ..
